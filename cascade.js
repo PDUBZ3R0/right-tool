@@ -2,8 +2,9 @@
 
 import { isPackageManager, isNpm, isYarn, isPnpm, isBun } from 'is-npm';
 import { spawnSync } from "node:child_process";
+import { fileURLToPath } from 'node:url';
 
-const tool = (()=>{
+export function nodepackagemgmt(){
 	if (isBun) {
 		return "bun"
 	} else if (isYarn) {
@@ -13,8 +14,21 @@ const tool = (()=>{
 	} else {
 		return "npm"
 	}
+}
+
+/**
+    Determine if this script was called directly from the command line or imported to use the containerengine method.
+ */
+const main = (()=>{ 
+  if (typeof import.meta.main === "undefined") {
+    const __filename = fileURLToPath(import.meta.url);
+    return (process.argv[1] === __filename)
+  } else {
+    return import.meta.main;
+  }
 })()
 
-const argsz = process.argv.slice(2);
-const result = spawnSync(tool, argsz, { stdio: "inherit" });
-process.exit(result.status ?? 1);
+if (main) {
+	const result = spawnSync(containerengine(), process.argv.slice(2), { stdio: "inherit" });
+	process.exit(result.status ?? 1);
+}
