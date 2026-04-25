@@ -1,6 +1,6 @@
 {
   "name": "right-tool",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Lets you setup package.json scripts to all use the same tool (npm|yarn|pnpm|bun) that you used to execute it. Detects container implementation (podman|docker|kubectl|buildah|incus|nerdctl|colima).",
   "main": "index.js",
   "author": "PDUBZ3R0 <pdubz3r0@proton.me>",
