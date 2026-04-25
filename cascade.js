@@ -17,7 +17,7 @@ export function nodepackagemgmt(){
 }
 
 /**
-    Determine if this script was called directly from the command line or imported to use the containerengine method.
+    Determine if this script was called directly from the command line or imported to use the nodepackagemgmt method.
  */
 const main = (()=>{ 
   if (typeof import.meta.main === "undefined") {
@@ -29,6 +29,6 @@ const main = (()=>{
 })()
 
 if (main) {
-	const result = spawnSync(containerengine(), process.argv.slice(2), { stdio: "inherit" });
+	const result = spawnSync(nodepackagemgmt(), process.argv.slice(2), { stdio: "inherit" });
 	process.exit(result.status ?? 1);
 }
