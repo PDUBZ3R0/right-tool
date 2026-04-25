@@ -1,0 +1,12 @@
+{
+  "name": "right-tool",
+  "version": "1.0.0",
+  "description": "selects the right tool for your scripts (npm|yarn|bun) and containers (podman|docker).",
+  "main": "index.js",
+  "author": "PDUBZ3R0 <pdubz3r0@proton.me>",
+  "license": "MIT",
+  "bin": {
+    "cascade": "./cascade.js",
+    "containment": "./containment.js"
+  }
+}
