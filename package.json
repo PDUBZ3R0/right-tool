@@ -1,6 +1,6 @@
 {
   "name": "right-tool",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "selects the right tool for your scripts (npm|yarn|bun) and containers (podman|docker).",
   "main": "index.js",
   "author": "PDUBZ3R0 <pdubz3r0@proton.me>",
