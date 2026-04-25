@@ -9,19 +9,19 @@ function has(cmd) {
   return result.status === 0;
 }
 
-let tools = ["podman","docker"]
+let tools = ["podman","docker","kubectl","buildah","incus","nerdctl","colima"]
 let tool;
 
 for (let thistool of tools) {
   let z = has(thistool);
-  console.log (thistool, z);
   if (z) {
     tool = thistool;
     break;
   } 
 }
+
 if (!tool) {
-  console.error("Error: none of the required tools [" + toolstr + "] is installed or in PATH.");
+  console.error("Error: none of the supported required tools", tools, "is installed or in PATH.");
   process.exit(1);
 }
 

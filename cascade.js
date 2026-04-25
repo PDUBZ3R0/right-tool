@@ -8,12 +8,13 @@ const tool = (()=>{
 		return "bun"
 	} else if (isYarn) {
 		return "yarn"
+	} else if (isPnpm) {
+		return "pnpm"
 	} else {
 		return "npm"
 	}
 })()
 
 const argsz = process.argv.slice(2);
-console.log ("pm.js:", tool, argsz);
 const result = spawnSync(tool, argsz, { stdio: "inherit" });
 process.exit(result.status ?? 1);
