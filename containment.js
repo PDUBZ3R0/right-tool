@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import { spawnSync } from "node:child_process";
-import { fileURLToPath } from 'node:url';
+import { main } from './main.js'
 
 const TOOLS = ["podman","docker","kubectl","buildah","incus","nerdctl","colima"];
 
@@ -23,19 +23,7 @@ export function containerengine() {
   }
 }
 
-/**
-    Determine if this script was called directly from the command line or imported to use the containerengine method.
- */
-const main = (()=>{ 
-  if (typeof import.meta.main === "undefined") {
-    const __filename = fileURLToPath(import.meta.url);
-    return (process.argv[1] === __filename)
-  } else {
-    return import.meta.main;
-  }
-})()
-
-if (main) {
+if (main(import.meta.url)) {
   const tool = containerengine();
   if (!tool) {
     console.error("Error: none of the supported required tools", tools, "is installed or in PATH.");
