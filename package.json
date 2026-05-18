@@ -1,6 +1,6 @@
 {
   "name": "right-tool",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Lets you setup scripts in package.json such that they use the same tool (npm/npx | yarn | pnpm | bun) or (node | bun) that you used to execute it. Also detects container implementation (docker|podman|kubectl|buildah|incus|nerdctl|colima).",
   "main": "index.js",
   "type": "module",
