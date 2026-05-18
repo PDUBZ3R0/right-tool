@@ -26,3 +26,27 @@ let ce = containerengine(); // returns "podman"
 let pm = nodepackagemgmt(true); // returns "yarn" (parameter: npx - boolean: whether to return npx instead of npm)
 let cl = nodelauncher() // returns "node"
 ```
+
+#### main
+You can use this shortcut in your esm modules for scripts that you want to create commands from:
+
+In **package.json**
+```json
+	"bin":{
+		"myscript": "./my.js"
+	}
+```
+
+In **my.js**
+```javascript
+#!/usr/bin/env node
+import { main } from 'right-tool'
+
+function _main_() {
+	// body...
+}
+
+if (main(import.meta.url)){
+	_main_();
+}
+```
