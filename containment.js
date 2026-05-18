@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import { spawnSync } from "node:child_process";
-import { main } from './main.js'
+import { main } from './commons.js'
 
 const TOOLS = ["podman","docker","kubectl","buildah","incus","nerdctl","colima"];
 

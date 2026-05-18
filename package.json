@@ -1,17 +1,16 @@
 {
   "name": "right-tool",
-  "version": "1.1.3",
-  "description": "Lets you setup scripts in package.json such that they use the same tool (npm|yarn|pnpm|bun) that you used to execute it. Also detects container implementation (docker|podman|kubectl|buildah|incus|nerdctl|colima).",
+  "version": "1.2.1",
+  "description": "Lets you setup scripts in package.json such that they use the same tool (npm/npx | yarn | pnpm | bun) or (node | bun) that you used to execute it. Also detects container implementation (docker|podman|kubectl|buildah|incus|nerdctl|colima).",
   "main": "index.js",
+  "type": "module",
+  "repository": "github:PDUBZ3R0/right-tool",
   "author": "PDUBZ3R0 <pdubz3r0@proton.me>",
   "license": "MIT",
   "bin": {
     "cascade": "./cascade.js",
-    "excapade": "./xade.js",
+    "escapade": "./escapade.js",
     "launcher": "./launcher.js",
     "containment": "./containment.js"
-  },
-  "dependencies": {
-    "is-npm": "^6.1.0"
   }
 }

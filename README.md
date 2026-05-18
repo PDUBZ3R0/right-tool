@@ -1,19 +1,28 @@
 # right-tool
 ### Select the right tool for the job! 
 
-Provides a command/keyword to represent one of many similar tools, that will call the most appropriate tool available
-in the running environment, whether that is your local machine where you are doing development or on a server, whether that is a 
-*test environment* / *production server* or some other remote system where you are deploying a service.
+Provides ***placeholder*** *keywords* you can use in **package.json** to represent a class of tools (*node.js*: **package manager**, **runtime**), (**container engine**) to be replaced at runtime by the most appropriate tool, determined by different conditions.
 
 ## cascade
-Use this keyword in your package.json scripts wherever you want to execute a script: `**cascade** run *scriptname*`
-Whichever tool you use to build or run the project: **npm**, **yarn**, **bun** or **pnpm** that same tool will be used by all of the scripts where you use cascade, providing consistency and avoids mixing tools and contexts within the same project.
+This keyword is a drop in replacement for your package manager: **npm**, **yarn**, **bun** or **pnpm**
+If you have a script `cascade run build && cascade run test` it will use the same tool you used on the command line to execute the script from *package.json* if your scripts call other scripts and other *project.json* that use cascade, the same tool will continue to be used across the board, providing consistency and avoiding mixed contexts, clashes between lockfiles and dependency resolution within the project.
 
-#### excapade
-This is virtually identical to cascade except when *npm* is the target, it executes `npx`
+#### escapade
+This is virtually identical to cascade except it provides support for `npx` commands.
 
-### launcher
-This keyword works on the same principle as cascade, except it decides to use **node** or **bun** depending on whether bun or one of the other tools was used to launch *package.json*
+#### launcher
+This tool uses the logic of cascade to select the runtime **node** or **bun** depending on whether bun was used to launch *package.json*
 
 ## containment
-Use this to identify and execute the container runtime setup on that system. Most popular options are **podman**, **docker**, **kubectl** for container managenebt and deployment, the following additional tools will be recognized: **buildah**, **incus**, **nerdctl**, **colima**
+Use this keyword to identify and execute the container runtime present on that system. Most popular options are **podman**, **docker**, **kubectl** for container management and deployment, also detects: **buildah**, **incus**, **nerdctl**, **colima**
+
+
+## API
+You can include the API in your code to get the string result of which command is executed on the command line:
+
+```javascript
+import { containerengine, nodepackagemgmt, nodelauncher } from 'right-tool'
+let ce = containerengine(); // returns "podman"
+let pm = nodepackagemgmt(true); // returns "yarn" (parameter: npx - boolean: whether to return npx instead of npm)
+let cl = nodelauncher() // returns "node"
+```
