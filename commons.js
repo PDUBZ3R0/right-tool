@@ -4,7 +4,7 @@ export { default as main } from "./main.js"
 const userAgent = process.env.npm_config_user_agent;
 
 export function nodepackagemgmt(npx){
-  let agent = userAgent?.matches(/^(npm|bun|yarn|pnpm|deno)/);
+  let agent = userAgent?.match(/^(npm|bun|yarn|pnpm|deno)/);
   if (!agent) {
     agent = ["default", "npm"];
   }
@@ -17,7 +17,7 @@ export function nodepackagemgmt(npx){
 }
 
 export function nodelauncher(){
-  let agent = userAgent?.matches(/^(bun|deno)/);
+  let agent = userAgent?.match(/^(bun|deno)/);
   if (agent) {
     return agent[1];
   } else {
