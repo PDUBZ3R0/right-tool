@@ -1,9 +1,7 @@
 #!/usr/bin/env node
 
 import { spawnSync } from "node:child_process";
-import { main } from './main.js'
-
-import { nodepackagemgmt } from './packagemgmt.js'
+import { main, nodepackagemgmt } from './commons.js'
 
 if (main(import.meta.url)) {
 	const result = spawnSync(nodepackagemgmt(true), process.argv.slice(2), { stdio: "inherit" });

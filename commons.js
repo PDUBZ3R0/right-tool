@@ -1,5 +1,5 @@
 
-import { fileURLToPath } from 'node:url';
+export { default as main } from "./main.js"
 
 const userAgent = process.env.npm_config_user_agent;
 
@@ -32,14 +32,5 @@ export function searchArgV(argv, item){
     } else {
       if (item === argv[idx]) return idx;
     }
-  }
-}
-
-export const main = url=>{ 
-  if (typeof import.meta.main === "undefined") {
-    const __filename = fileURLToPath(url);
-    return (process.argv[1] === __filename)
-  } else {
-    return import.meta.main;
   }
 }
