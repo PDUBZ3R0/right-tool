@@ -3,7 +3,7 @@
 import { spawnSync } from "node:child_process";
 import { main, nodepackagemgmt, searchArgV } from './commons.js'
 
-if (main(import.meta.url)) {
+if (main(import.meta)) {
 	let argv = process.argv.slice(2);
 	let iora = (searchArgV(/^(add|install|i)$/));
 	let packmgr = nodepackagemgmt(false);

@@ -1,11 +1,11 @@
 
 import { fileURLToPath } from 'node:url';
 
-export default function (url) { 
-  if (typeof import.meta.main === "undefined") {
-    const __filename = fileURLToPath(url);
+export default function (meta) { 
+  if (typeof meta?.main === "undefined") {
+    const __filename = fileURLToPath(meta.url);
     return (process.argv[1] === __filename)
   } else {
-    return import.meta.main;
+    return meta.main;
   }
 }

@@ -3,7 +3,7 @@
 import { spawnSync } from "node:child_process";
 import { main, nodelauncher } from './commons.js'
 
-if (main(import.meta.url)) {
+if (main(import.meta)) {
 	const result = spawnSync(nodelauncher(), process.argv.slice(2), { stdio: "inherit" });
 	process.exit(result.status ?? 1);
 }

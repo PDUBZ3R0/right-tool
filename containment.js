@@ -23,7 +23,7 @@ export function containerengine() {
   }
 }
 
-if (main(import.meta.url)) {
+if (main(import.meta)) {
   const tool = containerengine();
   if (!tool) {
     console.error("Error: none of the supported required tools", tools, "is installed or in PATH.");

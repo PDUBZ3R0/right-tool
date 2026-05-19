@@ -40,13 +40,14 @@ In **package.json**
 In **my.js**
 ```javascript
 #!/usr/bin/env node
-import { main } from 'right-tool'
+import main from 'right-tool/main'
 
 function _main_() {
 	// body...
 }
 
-if (main(import.meta.url)){
+// Main always requires you to pass it import.meta
+if (main(import.meta)){
 	_main_();
 }
 ```
